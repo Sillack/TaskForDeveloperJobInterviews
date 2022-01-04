@@ -1,0 +1,53 @@
+<div class=" py-2 px-6">
+  <a routerLink="" color="primary" mat-raised-button style="margin-bottom: 10px">
+    All posts
+  </a>
+  <mat-card class="example-card text-center">
+    <mat-card-title>{{post?.title}}</mat-card-title>
+    <mat-card-content>
+      <p>{{post?.body}}</p>
+      <div class="row  pt-5">
+        <div class="comments col-md-6">
+          <mat-card style="text-align: center">
+            <mat-card-title> Comments</mat-card-title>
+            <div *ngFor="let comment of commentsData" class="comment p-3">
+              <div class="comment_header">
+                <p class="comment_user">
+                  <span>{{comment.name}}</span>
+                </p>
+              </div>
+              <div class="comment_content">
+                <p>{{comment.email}}</p>
+                <p>{{comment.body}}</p>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+        <div class="comments col-md-6">
+          <form class="form">
+            <mat-card style="text-align: center">
+              <mat-card-title> New Comment</mat-card-title>
+              <mat-card-content>
+                <mat-form-field class="w-50">
+                  <input matInput placeholder="Name"/>
+                </mat-form-field>
+                <br/>
+                <mat-form-field class="w-50">
+                  <input matInput placeholder="Email"/>
+                </mat-form-field>
+                <br/>
+                <mat-form-field class="w-50">
+                  <input matInput placeholder="Body"/>
+                </mat-form-field>
+                <br>
+                <button color="primary" mat-raised-button style="margin-right: 5px">
+                  Submit
+                </button>
+              </mat-card-content>
+            </mat-card>
+          </form>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

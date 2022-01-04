@@ -1,0 +1,10 @@
+.comments {
+
+  border: 2px solid transparent;
+  padding: 20px;
+}
+
+.comment {
+
+  box-shadow: 0 1px 7px rgb(33 33 33 / 30%);
+}

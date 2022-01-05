@@ -31,7 +31,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     RouterModule,
     MatFormFieldModule,
     MatInputModule,
-    MatOptionModule
+    MatOptionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

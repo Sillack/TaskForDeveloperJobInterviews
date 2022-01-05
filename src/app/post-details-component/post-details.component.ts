@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PostService} from "../services/post.service";
 import {Subscription} from "rxjs";
-import {Posts} from "../models/Posts";
+import {Post} from "../models/post";
 import {ActivatedRoute} from "@angular/router";
 import {CommentService} from "../services/comment.service";
-import {Comments} from "../models/Comments";
+import {Comment} from "../models/comment";
 
 @Component({
   selector: 'app-post-details',
@@ -15,8 +15,8 @@ import {Comments} from "../models/Comments";
 export class PostDetailsComponent implements OnInit, OnDestroy {
   postId: number;
   subscriptions: Subscription[] = [];
-  post: Posts;
-  commentsData: Comments[];
+  post: Post;
+  commentsData: Array<Comment>;
 
   constructor(private route: ActivatedRoute, private postService: PostService, private commentService: CommentService) {
     this.postId = Number(this.route.snapshot.paramMap.get('id'));

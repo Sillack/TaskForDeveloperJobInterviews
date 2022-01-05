@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PostService} from "../services/post.service";
-import {Observable} from "rxjs";
-import {Posts} from "../models/Posts";
+import {Subscription} from "rxjs";
+import {Post} from "../models/post";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -9,14 +9,26 @@ import {ActivatedRoute, Router} from "@angular/router";
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
-export class PostComponent implements OnInit {
-  posts: Observable<Array<Posts>> | undefined
+
+export class PostComponent implements OnInit, OnDestroy {
+  posts: Array<Post>;
+  subscription: Subscription;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private postService: PostService) {
   }
 
   ngOnInit() {
-    this.posts = this.postService.getPosts();
+    this.getPosts();
+  }
+
+  getPosts(): void {
+    this.subscription = this.postService.getPosts.subscribe(postsData => {
+      this.posts = postsData;
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
